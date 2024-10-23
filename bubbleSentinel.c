@@ -46,6 +46,7 @@ int main(){
     printVet(vet,lenVet);
     bubbleSort(vet,lenVet);
     printVet(vet,lenVet);
+    free(vet);
 
     return 0;
 }
