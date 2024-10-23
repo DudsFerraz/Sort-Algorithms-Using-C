@@ -1,19 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void bubbleSort(int *vet, int size){
-    int aux, lastChange;
+int *createVet(int size){
+    int *newVet = malloc(sizeof(int)*size);
 
+    for(int i=0;i<size;i++){
+        int value = rand();
+        while(value>99){
+            value=value/10;
+        }
+        newVet[i]=value;
+    }
+    return newVet;
+}   
+
+void swap(int *vet,int a,int b){
+    int aux = vet[a];
+    vet[a] = vet[b];
+    vet[b] = aux;
+}
+
+void bubbleSort(int *vet, int size){
     while(size>0){
-        for(int i=0;i<size;i++){
+        int lastSwap=0;
+        for(int i=0;i<size-1;i++){
             if(vet[i]>vet[i+1]){
-                aux=vet[i];
-                vet[i]=vet[i+1];
-                vet[i+1]=aux;
-                lastChange=i;
+                swap(vet,i,i+1);
+                lastSwap=i+1;
             }
         }
-        size=lastChange;
+        size=lastSwap;
     }
 }
 
@@ -24,8 +40,10 @@ void printVet(int *vet,int size){
     printf("\n");
 }
 int main(){
-    int vet[10] = {2,5,7,8,9,3,2,4,5,-1}, lenVet=10;
+    int *vet, lenVet=25;
 
+    vet = createVet(lenVet);
+    printVet(vet,lenVet);
     bubbleSort(vet,lenVet);
     printVet(vet,lenVet);
 
