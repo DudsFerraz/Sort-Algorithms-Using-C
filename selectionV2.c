@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <limits.h>
 
 int *createVet(int size){
     int *newVet = malloc(sizeof(int)*size);
@@ -31,14 +30,14 @@ void swap(int *vet,int a,int b){
 void selectionSort(int *vet,int lenVet){
     int menor, maior, indexMenor, i=0, counter=lenVet-1, indexMaior;
     while(i<=counter){
-        menor = INT_MAX;
-        maior = INT_MIN;
+        menor = vet[i];
+        maior = vet[i];
         for(int j=i;j<=counter;j++){
-            if(vet[j]<menor){
+            if(vet[j]<=menor){
                 menor = vet[j];
                 indexMenor = j;
             }
-            if(vet[j]>maior){
+            if(vet[j]>=maior){
                 maior = vet[j];
                 indexMaior = j;
             }
